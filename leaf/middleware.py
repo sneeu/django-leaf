@@ -12,8 +12,8 @@ class LeafPageFallbackMiddleware(object):
             return response
         try:
             path = request.path_info.lstrip('/')
-            if path[-1] != '/':
-                return HttpResponsePermanentRedirect(path + '/')
+            if len(path) > 0 and path[-1] != '/':
+                return HttpResponsePermanentRedirect('/%s/' % path)
             return page_detail(request, path)
         except Http404:
             return response
