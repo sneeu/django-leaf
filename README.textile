@@ -1,0 +1,4 @@
+A small CMS, some where between Django's own Flatpages and django-cms.
+
+* Add <code>leaf.middleware.LeafPageFallbackMiddleware</code> to <code>MIDDLEWARE_CLASSES</code>.
+* Add <code>leaf</code> to <code>INSTALLED_APPS</code>.
