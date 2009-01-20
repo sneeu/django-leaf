@@ -1,0 +1,15 @@
+{% extends 'leaf/base.html' %}
+
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block extrahead %}
+	{% if page.description %}<meta name="description" content="{{ page.description }}" />{% endif %}
+	{% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}" />{% endif %}
+{% endblock %}
+
+{% block content %}
+	<article>
+		{{ page.copy }}
+	</article>
+{% endblock %}
