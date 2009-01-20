@@ -20,7 +20,10 @@ class Page(models.Model):
         if self.parent:
             self.url = '%s%s/' % (self.parent.url, self.slug, )
         else:
-            self.url = '%s/' % (self.slug, )
+            if self.slug:
+                self.url = '/%s/' % (self.slug, )
+            else:
+                self.url = '/'
 
         super(Page, self).save(*args, **kwargs)
 

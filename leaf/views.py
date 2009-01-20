@@ -5,6 +5,9 @@ from models import Page
 
 
 def page_detail(request, url):
+    if len(url) <= 0 or not url[0] == '/':
+        url = '/%s' % url
+
     page = get_object_or_404(Page, url=url)
     context = {'page': page}
     return render_to_response('leaf/page_detail.html', RequestContext(
