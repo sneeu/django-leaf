@@ -9,6 +9,7 @@ class Page(models.Model):
     parent = models.ForeignKey('self', blank=True, null=True)
     url = models.CharField(blank=True, max_length=120)
     copy = models.TextField()
+    head = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ('url', )

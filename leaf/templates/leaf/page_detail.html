@@ -6,10 +6,11 @@
 {% block extrahead %}
 	{% if page.description %}<meta name="description" content="{{ page.description }}" />{% endif %}
 	{% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}" />{% endif %}
+	{% if page.head %}{{ page.head|safe }}{% endif %}
 {% endblock %}
 
 {% block content %}
 	<article>
-		{{ page.copy }}
+		{{ page.copy|safe }}
 	</article>
 {% endblock %}

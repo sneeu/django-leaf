@@ -14,7 +14,7 @@ class PageAdmin(admin.ModelAdmin):
         }),
         ('Advanced options', {
             'classes': ('collapse', ),
-            'fields': ('description', 'keywords', )
+            'fields': ('description', 'keywords', 'head', )
         }),
     )
 
