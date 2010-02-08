@@ -1,7 +1,9 @@
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.template import RequestContext, loader
 
 from models import Page
+from util import navigation
 
 
 def page_detail(request, url):
@@ -9,6 +11,22 @@ def page_detail(request, url):
         url = '/%s' % url
 
     page = get_object_or_404(Page, url=url)
-    context = {'page': page}
-    return render_to_response('leaf/page_detail.html', RequestContext(
-        request, context))
+
+    if page.container_only:
+        children = page.children.all()
+        if len(children) > 0:
+            return HttpResponseRedirect(children[0].get_absolute_url())
+
+    template = loader.select_template([
+            'leaf%s.html' % url.rstrip('/'),
+            'leaf/page_detail.html'])
+
+    context = {
+        'description': page.description,
+        'keywords': page.keywords,
+        'navigation': navigation.navigation(None),
+        'page': page,
+        'title': page.title,
+    }
+
+    return HttpResponse(template.render(RequestContext(request, context)))

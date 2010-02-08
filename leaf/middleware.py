@@ -1,6 +1,7 @@
-from views import page_detail
 from django.http import Http404, HttpResponsePermanentRedirect
 from django.conf import settings
+
+from views import page_detail
 
 
 class LeafPageFallbackMiddleware(object):
