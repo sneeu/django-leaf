@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from distutils.core import setup, find_packages
+from distutils.core import setup
+
 
 setup(
     name='django-leaf',
@@ -9,4 +10,4 @@ setup(
     author='John Sutherland',
     author_email='john@sneeu.com',
     url='http://sneeu.com/projects/',
-    packages=find_packages(where='.'))
+    packages=['leaf'])
