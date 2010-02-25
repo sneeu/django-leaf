@@ -3,7 +3,6 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext, loader
 
 from models import Page
-from util import navigation
 
 
 def page_detail(request, url):
@@ -24,7 +23,6 @@ def page_detail(request, url):
     context = {
         'description': page.description,
         'keywords': page.keywords,
-        'navigation': navigation.navigation(None),
         'page': page,
         'title': page.title,
     }
